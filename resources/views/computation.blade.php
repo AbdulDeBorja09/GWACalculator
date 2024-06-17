@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="computation-div container p-5">
+<div class="computation-div container">
     <a href="/" class="home-button">
         <ion-icon name="home"></ion-icon> <span>>> Computation</span>
     </a>
@@ -9,36 +9,38 @@
     <h1 class="text-center">Grade Computation</h1>
     <hr>
     <div class="info row">
-        <div class="col-lg-6 col-md-12">
+        <div class="col-lg-6 col-md-12 info-div">
             @if($profile)
             <div class="row">
                 <div class="col-lg-2 col-sm-12">
-                    <h2>Name:</h2>
+                    <h3>Name:</h3>
                 </div>
                 <div class="col-lg-10 col-sm-12">
                     <h2>{{$profile->lname}}, {{$profile->fname}}</h2>
                 </div>
                 <div class="col-lg-2 col-sm-12">
-                    <h2>Program:</h2>
+                    <h3>Program:</h3>
                 </div>
                 <div class="col-lg-10 col-sm-12">
                     <h2> {{$profile->program}}</h2>
                 </div>
                 <div class="col-lg-2 col-sm-12">
-                    <h2>Year:</h2>
+                    <h3>Year:</h3>
                 </div>
                 <div class="col-lg-10 col-sm-12">
                     <h2> {{$profile->year}}</h2>
                 </div>
             </div>
             @else
-            <div class="container">
-                <h2>SETUP PROFILE</h2>
+            <div class="setup-profile-btn container">
+                <a href="/setupProfile">
+                    <ion-icon name="person"></ion-icon>SETUP PROFILE
+                </a>
             </div>
             @endif
         </div>
-        <div class="col-lg-6 col-md-12 d-flex" style="justify-content: end">
-            <div class="buttons d-flex" style="flex-direction:column">
+        <div class="computation-delete-btn col-lg-6 col-sm-12 ">
+            <div class="buttons ">
                 <form action="{{route('moduledelete')}}" method="POST">
                     @csrf
                     @method('POST')
@@ -46,7 +48,9 @@
                     @if($computation)
                     <input type="hidden" name="computation_id" value="{{$computation->id}}">
                     @endif
-                    <button class="btn delete-module-btn">DELETE MODULE</button>
+                    <button class="btn delete-module-btn">
+                        <ion-icon name="trash"></ion-icon>DELETE MODULE
+                    </button>
                 </form>
             </div>
         </div>
@@ -71,7 +75,7 @@
                         <label for="grade_{{ $i }}">Grade {{ $i + 1 }}:</label>
                         <input class="form-control" type="number" id="grade_{{ $i }}" name="grades[]" step="0.01">
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="last-input col-lg-3 col-md-6 col-sm-12">
                         <label for="units{{ $i }}">Units:</label>
                         <input class="form-control" type="number" id="units{{ $i }}" name="units[]" required
                             step="0.01">
@@ -109,7 +113,6 @@
             </button>
 
             @if(!$finals) <button class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-
                 <ion-icon name="cloud-upload"></ion-icon>ADD FINAL GRADES
             </button>
             @endif
@@ -181,7 +184,11 @@
                 </tr>
                 <tr>
                     <td>TARGET SUCCESS RATE:</td>
-                    <td>@if($target->percentage > 75 && $target->percentage = 100)
+                    <td>
+                        @if($target->percentage > 100)
+                        <h5 class="text-success">100%</h5>
+
+                        @elseif($target->percentage > 75 && $target->percentage === 100)
                         <h5 class="text-success">{{$target->percentage}}%</h5>
                         @elseif($target->percentage >= 50)
                         <h5 class="text-warning">{{$target->percentage}}%</h5>
@@ -196,7 +203,7 @@
 
             @if($roundedGrade)
             <h5>Grade Reccomendation</h5>
-            <p>{{$roundedGrade}}</p>
+            <p>{{$roundedGrade}} {{$text}}</p>
             @else
             @if($target->percentage < 75 || $target->percentage == 0)
                 <h2>YOU FAILED, NICE TRY </h2>
@@ -210,6 +217,7 @@
     <div class="text-center computation-back-btn">
         <button class="btn" onclick="history.back()">BACK</button>
     </div>
+    <div class="p-3"></div>
     @endif
 </div>
 

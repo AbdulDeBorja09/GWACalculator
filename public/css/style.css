@@ -15,8 +15,10 @@
 }
 .navbar {
     padding: 0px 100px;
-    background-color: #35408e;
+    background-color: #3a3150;
     justify-content: space-evenly;
+    background-image: url("/image/navimg.svg");
+    object-fit: cover;
 }
 .navbar2 {
     width: 100%;
@@ -31,8 +33,8 @@
     margin-top: 0px;
 }
 .navbrand {
-    width: 33px;
-    margin-top: -5px;
+    height: 40px;
+    margin-top: 0px;
 }
 .navbar-container {
     width: 100%;
@@ -42,13 +44,23 @@
     font-size: 18px;
 }
 .yellow-line {
-    background-color: #ffd41c;
     height: 5px;
+    background-color: #2f293f;
 }
+
 .greetings {
-    color: #31708f;
     font-size: 20px;
-    padding: 20px 10px;
+    padding: 20px 20px;
+}
+.greetingss {
+    font-size: 20px;
+    padding: 20px 0px;
+    font-weight: 700;
+}
+.user-greetings {
+    color: #3a3150;
+    font-size: 20px;
+    padding: 20px 0px;
     font-weight: 700;
 }
 .homepage .user {
@@ -62,7 +74,7 @@
 }
 .top ion-icon {
     font-size: 40px;
-    color: #35408e;
+    color: #3a3150;
 }
 .top h1 {
     color: black;
@@ -72,8 +84,8 @@
     font-weight: 600;
 }
 .top a {
-    color: #35408e;
-    font-size: 18px;
+    color: #3a3150;
+    font-size: 22px;
 }
 .top span {
     color: #000000;
@@ -91,7 +103,7 @@
 }
 .compute-div .top ion-icon {
     font-size: 40px;
-    color: #35408e;
+    color: #3a3150;
 }
 .compute-div .top h1 {
     color: black;
@@ -101,7 +113,7 @@
     font-weight: 600;
 }
 .compute-div .top a {
-    color: #35408e;
+    color: #3a3150;
     font-size: 18px;
 }
 .compute-div .top span {
@@ -164,7 +176,7 @@
     padding: 50px 40px;
     border-radius: 5px;
     border: 1px solid rgb(201, 201, 201);
-    background-color: rgb(240, 240, 240);
+    background-color: #f8fafc;
 }
 .setup-div {
     margin-top: 50px;
@@ -172,22 +184,25 @@
 .add-module-div label {
     font-size: 16px;
     font-weight: 600;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 .add-module-div select,
 .add-module-div input {
     margin-top: 5px;
     font-size: 16px;
+    margin-bottom: 20px;
     border: 1px solid rgb(189, 189, 189);
 }
 .compute-div .flex-box {
     display: flex;
     flex-wrap: wrap;
+    justify-content: start;
 }
 .compute-div .flex-box .box {
-    margin-right: 30px;
+    margin-right: 32px;
     margin-bottom: 20px;
-    width: 31%;
+    width: 400px;
+
     text-decoration: none;
     transition: ease-in-out 0.1s;
 }
@@ -215,13 +230,21 @@
     color: rgb(75, 75, 75);
 }
 .compute-div h2 {
-    color: #272f68;
+    color: #3a3150;
     margin-top: 20px;
+}
+.computation-div {
+    margin-top: 40px;
 }
 .computation-div .info {
     margin-top: 30px;
 }
-.computation-div h2 {
+.computation-div .info-div h3 {
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+.computation-div .info-div h2 {
     font-size: 18px;
     text-transform: capitalize;
 }
@@ -256,7 +279,6 @@
     text-align: center;
     height: 50px;
     border-radius: 0.5em;
-
     overflow: hidden;
 }
 
@@ -279,11 +301,11 @@
 }
 
 .add-grades-btn button div:nth-child(1) {
-    background-color: #272f68;
+    background-color: #3a3150;
 }
 
 .add-grades-btn button div:nth-child(2) {
-    background-color: #ffd41c;
+    background-color: #d2c6d4;
 }
 
 .add-grades-btn button:hover div {
@@ -322,7 +344,7 @@
     font-weight: 600;
 }
 .grades-table thead th {
-    background-color: #3d4791;
+    background-color: #3a3150;
     text-align: center;
     font-weight: 500;
     color: white;
@@ -336,7 +358,12 @@
 .edit-buttons button {
     width: 100%;
     text-align: start;
+    background: #3a3150;
+    margin-top: 10px;
+    color: rgb(233, 233, 233);
+    font-size: 13px;
 }
+
 .display-grades-div {
     margin-top: 30px;
 }
@@ -349,7 +376,7 @@
 }
 .home-button {
     text-decoration: none;
-    color: #35408e;
+    color: #3a3150;
 }
 .home-button ion-icon {
     font-size: 30px;
@@ -360,10 +387,16 @@
 .add-finals-modal .grade-input {
     text-align: center;
 }
+.name-div a {
+    background-color: #2f293f;
+    color: white;
+    text-align: center;
+    width: 300px;
+}
+
 .edit-profile-btn ion-icon {
     font-size: 20px;
     margin-bottom: -4px;
-    margin-left: -12px;
 }
 .show-target-div {
     margin-left: 10px;
@@ -379,7 +412,7 @@
     font-size: 20px;
 }
 .delete-module-btn {
-    background-color: #272f68;
+    background-color: #3a3150;
     color: white;
 }
 .terms-year-div {
@@ -389,7 +422,7 @@
     font-size: 14px;
 }
 .add-traget-gwa-table tr th {
-    background-color: #272f68;
+    background-color: #3a3150;
     color: white;
     border: 1px solid #dee2e6;
     font-size: 15px;
@@ -400,8 +433,7 @@
 }
 .add-traget-gwa-table tr td:nth-child(4),
 .add-traget-gwa-table tr td:nth-child(5),
-.add-traget-gwa-table tr td:nth-child(3),
-.add-traget-gwa-table tr th:nth-child(3) {
+.add-traget-gwa-table tr td:nth-child(3) {
     width: 150px;
     text-align: center;
 }
@@ -422,17 +454,21 @@
     width: 70%;
     text-align: center;
 }
+.add-traget-gwa-table .block {
+    display: none;
+    border: 1px solid #3a3150;
+}
 .add-gwa-button {
     margin: 20px 0px;
 }
 .add-gwa-button a {
-    background-color: #272f68;
+    background-color: #3a3150;
     color: white;
     font-weight: 500;
     text-align: start;
 }
 .gwa-error-alert {
-    background-color: #272f68;
+    background-color: #3a3150;
     color: white;
     font-style: italic;
     padding: 10px 10px;
@@ -448,14 +484,93 @@
     font-weight: 700;
 }
 .reco-table tbody {
-    border-top: 5px solid #3d4791;
+    border-top: 5px solid #3a3150;
 }
 .computation-back-btn button {
-    background-color: #272f68;
+    background-color: #3a3150;
     color: white;
     margin-top: 20px;
     width: 50%;
 }
+.delete-profile-modal {
+    padding: 50px;
+}
+.delete-profile-modal .buttons {
+    display: flex;
+    margin: 30px 0px;
+    justify-content: space-around;
+}
+.delete-profile-modal .buttons form {
+    width: 50%;
+}
+.delete-profile-modal .buttons button {
+    background-color: #3a3150;
+    color: white;
+    width: 50%;
+}
+.delete-profile-img {
+    width: 100%;
+}
+.computation-delete-btn {
+    display: flex;
+    justify-content: end;
+}
+
+.computation-delete-btn button {
+    background-color: #3a3150;
+    color: white;
+    text-align: start;
+    width: 100%;
+    font-size: 12px;
+}
+.computation-delete-btn button ion-icon {
+    margin-bottom: -1px;
+    margin-right: 10px;
+}
+.edit-grades-modal {
+    font-weight: 500;
+}
+.edit-grade-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.edit-grade-buttons button {
+    width: 50%;
+    background-color: #3a3150;
+    color: white;
+}
+.deactivate-account-btn button {
+    background-color: #3a3150;
+    color: white;
+}
+.setup-profile-btn a {
+    color: black;
+    font-size: 20px;
+}
+.setup-profile-btn ion-icon {
+    margin-right: 5px;
+    margin-bottom: -3px;
+}
+.error-container {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+.error-container img {
+    width: 50%;
+}
+.error-container p {
+    font-size: 20px;
+    margin-top: 20px;
+    color: #3a3150;
+}
+.error-container a {
+    font-size: 17px;
+}
+
+
 @media screen and (max-width: 760px) {
     .navbar {
         padding: 0px 0px;
@@ -482,10 +597,184 @@
     .nav-item {
         padding: 0px 32px;
     }
+    .compute-div .flex-box {
+        justify-content: space-evenly;
+    }
+    .computation-div {
+        margin: 20px 20px;
+        margin-bottom: 20px;
+    }
+    .compute-div .flex-box .box {
+        margin-right: 0px;
+    }
+    .compute-div .top {
+        margin-top: 20px;
+    }
+    .compute-div .top a {
+        font-size: 14px;
+    }
+    .compute-div .top h1 {
+        font-size: 17px;
+    }
+    .delete-profile-img {
+        width: 100%;
+    }
+    .computation-div .info {
+        margin-top: 30px;
+        width: 100%;
+    }
+    .computation-div .info-div h3 {
+        font-size: 17px;
+        text-transform: capitalize;
+        font-weight: 500;
+    }
+    .computation-div .info-div h2 {
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .computation-delete-btn {
+        justify-content: start;
+    }
+    .computation-delete-btn button {
+        margin-top: 10px;
+    }
+    .computation-div .submitform h6 {
+        font-size: 15px;
+    }
+    .computation-div .submitform {
+        margin-top: 20px;
+    }
+    .computation-div .submitform h6 ion-icon {
+        font-size: 25px;
+        margin-right: 15px;
+        margin-bottom: -8px;
+    }
+    .computation-div .submitform .last-input {
+        border-bottom: 1px solid black;
+        padding-bottom: 20px;
+    }
+    .computation-delete-btn {
+        display: block;
+    }
+    .computation-delete-btn button {
+        width: 180px;
+    }
+    .add-module-div label {
+        margin-top: 0px;
+    }
+    .reco-table tr td {
+        font-size: 13px;
+        font-weight: 600;
+    }
+    .add-gwa-container {
+        width: 100%;
+        overflow-y: auto;
+    }
+    .add-gwa-container table {
+        width: 100%;
+    }
+    .add-traget-gwa-table tr th {
+        font-size: 13px;
+    }
+    .add-traget-gwa-table tr td {
+        font-size: 12px;
+    }
+
+    .add-traget-gwa-table tr td:first-child,
+    .add-traget-gwa-table tr td:nth-child(2),
+    .add-traget-gwa-table tr td:nth-child(3) {
+        width: 100px;
+    }
+
+    .add-traget-gwa-table tr th:nth-child(4),
+    .add-traget-gwa-table tr td:nth-child(4),
+    .add-traget-gwa-table tr td:nth-child(5) {
+        text-align: center;
+        width: 20px;
+    }
+    .add-traget-gwa-table .edit {
+        background-color: #127c54;
+        color: white;
+        width: 50px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .add-traget-gwa-table .delete {
+        background-color: #8b0001;
+        color: white;
+        width: fit-content;
+        margin: 0;
+        padding: 0px 5px;
+        text-align: center;
+    }
+    .add-traget-gwa-table .hidden {
+        display: none;
+    }
+    .add-traget-gwa-table .block {
+        display: block;
+    }
+    .edit-grades-modal .last-row {
+        border-bottom: 1px solid #2f293f;
+        margin-bottom: 10px;
+    }
+    .edit-grade-buttons {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .edit-grade-buttons button {
+        width: 100px;
+        background-color: #3a3150;
+        color: white;
+    }
+    .name-div a {
+        width: 100%;
+    }
+    .delete-profile-modal {
+        padding: 0;
+    }
+    .delete-profile-modal .buttons {
+        margin: 10px 0px;
+    }
+    .delete-profile-modal .buttons form {
+        width: 100%;
+    }
+    .delete-profile-modal .buttons button {
+        background-color: #3a3150;
+        color: white;
+        width: 50%;
+    }
+    .setup-profile-btn a {
+        color: black;
+        font-size: 17px;
+    }
+    .error-container img {
+        width: 100%;
+    }
+    .error-container {
+        width: 100%;
+        padding: 30px;
+    }
+    .error-container p {
+        font-size: 20px;
+        margin-top: 20px;
+        color: #3a3150;
+    }
+    .error-container a {
+        font-size: 17px;
+    }
 }
 
 @media screen and (max-width: 1200px) {
     .homemenu-row {
         justify-content: space-evenly;
+    }
+    .compute-div .flex-box {
+        justify-content: space-evenly;
+    }
+    .compute-div .flex-box .box {
+        margin-right: 0px;
     }
 }

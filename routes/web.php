@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/error', function () {
+    throw new \Exception('Test Error Message');
+});
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'profile'])->name('profile');

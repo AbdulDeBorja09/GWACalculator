@@ -9,34 +9,30 @@
                     <h1 class="modal-title  fs-5">Add Final Grades</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="edit-grades-modal modal-body" style="max-height: 10000px; overflow-y: auto;">
                     <div class="row">
-                        <div class="col-lg-9 text-center">
-                            <h6>Subjects</h6>
-                        </div>
-                        <div class="col-lg-3 text-center">
-                            <h6>Final Grade</h6>
-                        </div>
                         <input type="hidden" name="id" value="{{$computation->id}}">
                         @for ($i = 0; $i < $module->subjects; $i++)
                             <div class="col-lg-9">
+                                <label for="">Subject: {{ $i + 1 }}:</label>
                                 <input class="form-control" type="text" id="subjects{{ $i }}" required step="0.01"
                                     value="{{$subject[$i]}}" readonly>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="last-row col-lg-3 col-md-6 col-sm-12">
+                                <label for="">Final Grade: {{ $i + 1 }}:</label>
                                 <input class="form-control grade-input" type="number" id="grade_{{ $i }}" name="final[]"
                                     step="0.01">
                             </div>
                             @endfor
                     </div>
                 </div>
-                <div class="modal-footertext-center d-flex">
+                <div class="edit-grade-buttons text-center d-flex">
 
                     <div class="col-lg-6 text-center">
-                        <button type="button" class="btn btn-secondary w-50" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
                     </div>
                     <div class="col-lg-6 text-center">
-                        <button type="submit" class="btn btn-success w-50">Submit</button>
+                        <button type="submit" class="btn">Submit</button>
                     </div>
                 </div>
                 <div style="height: 20px"></div>
@@ -56,47 +52,36 @@
                     <h1 class="modal-title  fs-5">Edit Grades</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="edit-grades-modal modal-body" style="max-height: 10000px; overflow-y: auto;">
                     <div class="row">
-                        @if($finals === NULL)
-                        <div class="col-lg-9 text-center">
-                            <h6>Subjects</h6>
-                        </div>
-                        <div class="col-lg-3 text-center">
-                            <h6>Midterm Grades</h6>
-                        </div>
-                        @else
-                        <div class="col-lg-6 text-center">
-                            <h6>Subjects</h6>
-                        </div>
-                        <div class="col-lg-3 text-center">
-                            <h6>Midterm Grades</h6>
-                        </div>
-                        <div class="col-lg-3 text-center">
-                            <h6>Final Grades</h6>
-                        </div>
-                        @endif
                         <input type="hidden" name="id" value="{{ $computation->id }}">
                         @for ($i = 0; $i < $module->subjects; $i++)
-
                             @if($finals)
                             <div class="col-lg-6">
+                                <label for="">Subject {{ $i + 1 }}:</label>
                                 <input class="form-control" type="text" required step="0.01" value="{{ $subject[$i] }}"
                                     readonly>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-12">
-                                <input class="form-control grade-input" type="number" name="grades[]" step="0.01">
+                                <label for="">Midterms Grade: {{ $i + 1 }}:</label>
+                                <input class="form-control grade-input" type="number" value="{{ $midterms[$i] }}"
+                                    name="grades[]" step="0.01">
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <input class="form-control grade-input" type="number" name="final[]" step="0.01">
+                            <div class="last-row col-lg-3 col-md-6 col-sm-12">
+                                <label for="">Finals Grade: {{ $i + 1 }}:</label>
+                                <input class="form-control grade-input" type="number" name="final[]" step="0.01" {{
+                                    $finals ? '' : 'disabled' }}>
                             </div>
                             @else
                             <div class="col-lg-9">
+                                <label for="">Subject {{ $i + 1 }}:</label>
                                 <input class="form-control" type="text" required step="0.01" value="{{ $subject[$i] }}"
                                     readonly>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <input class="form-control grade-input" type="number" name="grades[]" step="0.01">
+                            <div class="last-row col-lg-3 col-md-6 col-sm-12 text-start">
+                                <label for="">Midterms Grade: {{ $i + 1 }}:</label>
+                                <input class="form-control grade-input" type="number" value="{{ $midterms[$i] }}"
+                                    name="grades[]" step="0.01">
                             </div>
 
                             @endif
@@ -104,13 +89,12 @@
 
                     </div>
                 </div>
-                <div class="modal-footertext-center d-flex">
-
+                <div class="edit-grade-buttons text-center d-flex">
                     <div class="col-lg-6 text-center">
-                        <button type="button" class="btn btn-secondary w-50" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn " data-bs-dismiss="modal">Close</button>
                     </div>
                     <div class="col-lg-6 text-center">
-                        <button type="submit" class="btn btn-success w-50">Submit</button>
+                        <button type="submit" class="btn ">Submit</button>
                     </div>
                 </div>
                 <div style="height: 20px"></div>
@@ -121,7 +105,7 @@
 
 <div class="add-finals-modal modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false"
     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-dialog modal-lg modal-dialog-centered ">
         <div class="modal-content">
             <form action="{{route('submitsubjects')}}" method="POST">
                 @csrf
@@ -130,7 +114,7 @@
                     <h1 class="modal-title  fs-5">Edit Subjects</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="edit-grades-modal modal-body " style="max-height: 10000px; overflow-y: auto;">
                     <div class="row">
                         <div class="col-lg-12 text-center">
                             <h6>Subjects</h6>
@@ -138,20 +122,21 @@
 
                         <input type="hidden" name="id" value="{{$computation->id}}">
                         @for ($i = 0; $i < $module->subjects; $i++)
-                            <div class="col-lg-12">
+                            <div class="last-row col-lg-12">
+                                <label for="subjects{{ $i }}"> Subject {{ $i + 1 }}:</label>
                                 <input class="form-control" type="text" id="subjects{{ $i }}" required step="0.01"
                                     value="{{$subject[$i]}}" name="subjects[]">
                             </div>
                             @endfor
                     </div>
                 </div>
-                <div class="modal-footertext-center d-flex">
+                <div class="edit-grade-buttons  text-center d-flex">
 
                     <div class="col-lg-6 text-center">
-                        <button type="button" class="btn btn-secondary w-50" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn " data-bs-dismiss="modal">Close</button>
                     </div>
-                    <div class="col-lg-6 text-center">
-                        <button type="submit" class="btn btn-success w-50">Submit</button>
+                    <div class="last-row col-lg-6 text-center">
+                        <button type="submit" class="btn ">Submit</button>
                     </div>
                 </div>
                 <div style="height: 20px"></div>

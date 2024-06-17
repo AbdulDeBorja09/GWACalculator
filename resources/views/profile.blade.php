@@ -40,7 +40,7 @@
     </div>
     @if($profile)
     <div class="info-container container">
-        <h3 style="font-weight: 400" class="text-center">Basic Information</h3>
+        <h3 style="font-weight: 400; color:#3a3150;" class="text-center">Basic Information</h3>
         <hr />
         <div class="inner row shadow-sm">
             <div class="col-lg-6 col-md-12 col-sm-12">
@@ -94,8 +94,8 @@
             </div>
         </div>
     </div>
-    <div class="text-center p-5">
-        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">DEACTIVATE
+    <div class="deactivate-account-btn  text-center p-5">
+        <button class=" btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">DEACTIVATE
             ACCOUNT</button>
     </div>
     @else
@@ -103,7 +103,7 @@
 
         <img src="{{url('/image/setup.svg')}}" width="320px">
         <h1 class="p-3">SETUP YOUR PROFILE FRIST!</h1>
-        <a class="btn text-white" href="{{route('setupProfile')}}" style="background-color: #35408e;">SET UP PROFILE</a>
+        <a class="btn text-white" href="{{route('setupProfile')}}" style="background-color: #3a3150;">SET UP PROFILE</a>
 
     </div>
     @endif

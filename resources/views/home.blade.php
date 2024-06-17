@@ -3,7 +3,10 @@
 @section('content')
 <div class="home-div ">
     <div class="homepage">
-        <h1 class="greetings">Good day <span class="user">{{ Auth::user()->name }}</span>, welcome to your dashboard!
+        <h1 class="greetings"><span class="greetingss">Good day </span><span class="user-greetings">{{
+                Auth::user()->name
+                }}</span><span class="greetingss">,
+                welcome to your dashboard!</span>
         </h1>
         <div class="container">
             <div class="top">

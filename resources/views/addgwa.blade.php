@@ -31,7 +31,7 @@
                     <input class="form-control" type="number" name="gwa" step="0.01">
 
                     <div class="text-center">
-                        <button class="btn btn-dark w-50 m-5" type="submit">ADD TARGET GWA</button>
+                        <button class="btn btn-dark w-50 add-gwa-button" type="submit">ADD TARGET GWA</button>
                     </div>
                 </form>
                 @if (session('error'))

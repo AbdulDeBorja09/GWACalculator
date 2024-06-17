@@ -32,7 +32,7 @@
                     <input class="form-control" type="number" name="subjects" id="">
 
                     <div class="text-center">
-                        <button class="btn btn-dark w-50 m-5" type="submit">ADD MODULE</button>
+                        <button class="btn btn-dark w-50" type="submit">ADD MODULE</button>
                     </div>
                 </form>
                 @if (session('error'))

@@ -92,7 +92,7 @@
     <div class="container py-5 h-100">
         <div class="row d-flex align-items-center justify-content-center h-100">
             <div class="col-md-8 col-lg-7 col-xl-6">
-                <img src="{{url('/image/login.png')}}" class="img-fluid" alt="Phone image" height="300px" width="600px">
+                <img src="{{url('/image/login.svg')}}" class="img-fluid" alt="Phone image" height="300px" width="600px">
             </div>
             <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                 <form method="POST" action="{{ route('login') }}">
@@ -128,13 +128,14 @@
                     </div>
 
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button type="submit" value="Sign in" class="btn btn-warning btn-lg text-light my-2 py-3"
-                            style="width:100% ; border-radius: 30px; font-weight:600;">Sign In
+                        <button type="submit" value="Sign in" class="btn  btn-lg my-2 py-3"
+                            style="width:100% ; border-radius: 30px; font-weight:600; background-color: #9682b9;">Sign
+                            In
                         </button>
                     </div>
                 </form><br>
-                <p align="center">i don't have any account <a href="{{ route('register') }}" class="text-warning"
-                        style="font-weight:600;text-decoration:none;">Register Here</a></p>
+                <p align="center">i don't have any account <a href="{{ route('register') }}"
+                        style="font-weight:600;text-decoration:none; color: #9682b9;">Register Here</a></p>
             </div>
         </div>
     </div>

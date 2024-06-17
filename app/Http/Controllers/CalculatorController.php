@@ -31,11 +31,11 @@ class CalculatorController extends Controller
     {
         $uid =  Auth::id();
         $module = Year::where('id', $id)->first();
-        $profile = Profile::where('user_id', $uid)->first();
-        $num =  $module->subjects;
         if (!$module) {
             return redirect()->route('compute');
         }
+        $profile = Profile::where('user_id', $uid)->first();
+        $num =  $module->subjects;
         $computation = Computation::where('user_id', $uid)->where('year', $module->year)->where('term', $module->term)->first();
         $target = Target::where('user_id', $uid)->where('year', $module->year)->where('term', $module->term)->first();
 
@@ -51,8 +51,10 @@ class CalculatorController extends Controller
 
             if ($computation->finals === NULL) {
                 $finals = NULL;
+                $text = "midterms.";
             } else {
                 $finals = explode(',', $computation->finals);
+                $text = "finals.";
             }
 
             if ($target) {
@@ -61,14 +63,21 @@ class CalculatorController extends Controller
                 $divide = $gwa / $targetGwa;
                 $total = $divide * 100;
                 $target->percentage = round($total, 2);
+
+
                 if ($finals == NULL) {
                     $TotalGrades = array_sum(array_map('intval', $midterms));
                     $remaining = explode(',', $computation->midterms);
                     $subjects = explode(',', $computation->midterms);
-                    $gradescount = count($midterms);
                     $gradescount = count(array_filter($midterms, function ($value) {
                         return trim($value) !== '';
                     }));
+                    $remaining = 0;
+                    foreach ($subjects as $grade) {
+                        if ($grade === '' || $grade === null) {
+                            $remaining++;
+                        }
+                    }
                 } else {
                     $TotalGrades = array_sum(array_map('intval', $finals));
                     $remaining = explode(',', $computation->finals);
@@ -77,13 +86,15 @@ class CalculatorController extends Controller
                     $gradescount = count(array_filter($finals, function ($value) {
                         return trim($value) !== '';
                     }));
-                }
-                $remaining = 0;
-                foreach ($subjects as $grade) {
-                    if ($grade === ' ' || $grade === null) {
-                        $remaining++;
+
+                    $remaining = 0;
+                    foreach ($subjects as $grade) {
+                        if ($grade === ' ' || $grade === null) {
+                            $remaining++;
+                        }
                     }
                 }
+
 
                 $currentAverage = $gwa;
                 $possibleGrades = [1, 1.5, 2, 2.5, 3, 3.5, 4];
@@ -96,12 +107,13 @@ class CalculatorController extends Controller
                     $totalneededGrades = $requiredGradePointsForRemaining / $remaining;
                     function closestGrade($neededGrade, $possibleGrades)
                     {
+
                         if ($neededGrade > 4) {
-                            return "Even you got 4 in remainig subject you can't reach you target GWA";
+                            return "Even you got 4 in remainig subject you can't reach you target GWA for ";
                         }
                         foreach ($possibleGrades as $grade) {
                             if ($grade >= $neededGrade) {
-                                return "You need to get a grade of " . $grade . " on the remaining subjects";
+                                return "You need to get a grade of " . $grade . " on the remaining subjects for";
                             }
                         }
                         return end($possibleGrades);
@@ -109,7 +121,7 @@ class CalculatorController extends Controller
 
                     $roundedGrade = closestGrade($totalneededGrades, $possibleGrades);
                 }
-                return view('computation', compact('module', 'profile', 'computation', 'midterms', 'subject', 'finals', 'units', 'totalunits', 'target', 'roundedGrade'));
+                return view('computation', compact('module', 'profile', 'computation', 'midterms', 'subject', 'finals', 'units', 'totalunits', 'target', 'roundedGrade', 'text'));
             } else {
                 return view('computation', compact('module', 'profile', 'computation', 'midterms', 'subject', 'finals', 'units', 'totalunits', 'target'));
             }
@@ -174,8 +186,6 @@ class CalculatorController extends Controller
     {
         $grades = $request->input('grades');
         $finals = $request->input('final');
-
-
 
         $finalscheck = Computation::where('id', $request->id)->first();
         if ($finalscheck->finals == NULL) {
